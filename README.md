@@ -76,16 +76,6 @@ Feature groups reveal the structural variability across joint position, cosine, 
 
 ---
 
-### Full Dataset Overview
-
-| Dataset | Visualization |
-|:--|:--:|
-| **Train Set** | <img src="plots/Entire train-final.csv dataset.png" width="700"/> |
-| **Test Set**  | <img src="plots/Entire test-final.csv dataset.png" width="700"/> |
-
-Both sets demonstrate consistent scaling after normalization.
-
----
 
 ### Model Comparison
 
