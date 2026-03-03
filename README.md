@@ -1,7 +1,19 @@
 ## Data Exploration & Visualization
 
-The gesture recognition dataset was analyzed through a series of exploratory visualizations,  
-including distribution, normalization, and missing-value heatmaps.
+Before training the models, the gesture recognition dataset was carefully analyzed to understand its structure and statistical properties.
+
+The analysis focused on:
+
+- Class balance
+- Missing values
+- Feature scaling
+- Feature variability
+- Model performance comparison
+
+For readers interested in deeper technical details, see:
+- [Feature Engineering Details](#feature-engineering-details)
+- [Normalization Method](#normalization-method)
+- [Model Selection Rationale](#model-selection-rationale)
 
 ---
 
@@ -10,54 +22,35 @@ including distribution, normalization, and missing-value heatmaps.
 <p align="center">
   <img src="plots/Histogram label train-final.png" width="600" alt="Train label distribution"/>
   <br>
-  <em>Label histogram for train-final.csv</em>
+  <em>Label distribution for the training set</em>
 </p>
 
 <p align="center">
   <img src="plots/Histogram label test-final.png" width="600" alt="Test label distribution"/>
   <br>
-  <em>Label histogram for test-final.csv</em>
+  <em>Label distribution for the test set</em>
 </p>
 
-The gesture labels are approximately balanced,  
-ensuring fair training without dominant class bias.
+The gesture classes are approximately balanced in both datasets.  
+Balanced labels reduce model bias and support fair evaluation.
 
 ---
 
 ### Missing Data Check
 
 <p align="center">
-  <img src="plots/MissingDatapoints1.png" width="700" alt="Missing data in train-final.csv"/>
+  <img src="plots/MissingDatapoints1.png" width="700" alt="Missing data in training set"/>
 </p>
 
 <p align="center">
-  <img src="plots/MissingDatapoints2.png" width="700" alt="Missing data in test-final.csv"/>
+  <img src="plots/MissingDatapoints2.png" width="700" alt="Missing data in test set"/>
 </p>
 
-Both datasets show negligible missing values — confirming data integrity before preprocessing.
+The heatmaps confirm that missing values are negligible, indicating good data integrity.
 
 ---
 
-### Data Normalization
-
-<p align="center">
-  <img src="plots/Normalized_all_training_data.png" width="800"/>
-</p>
-
-<p align="center">
-  <img src="plots/Normalized traing data.png" width="800"/>
-</p>
-
-<p align="center">
-  <img src="plots/Normalized testing data.png" width="800"/>
-</p>
-
-Normalization aligns feature scales and eliminates skewness,  
-creating a well-centered input distribution suitable for ML models.
-
----
-
-### Boxplot Feature Analysis
+### Feature Variability (Boxplots)
 
 <p align="center">
   <img src="plots/BoxPlot1-60.png" width="800"/>
@@ -72,10 +65,9 @@ creating a well-centered input distribution suitable for ML models.
   <img src="plots/BoxPlot180-240.png" width="800"/>
 </p>
 
-Feature groups reveal the structural variability across joint position, cosine, and mean features.
+The boxplots show structured variability across feature groups, suggesting meaningful differences between gesture classes.
 
 ---
-
 
 ### Model Comparison
 
@@ -83,12 +75,50 @@ Feature groups reveal the structural variability across joint position, cosine, 
   <img src="plots/Model_Results_Summary.png" width="700"/>
 </p>
 
-Random Forest and Extra Trees outperform other classifiers  
-with ~85% accuracy, while Gradient Boosting struggled due to limited tuning.
+Random Forest and Extra Trees achieved the strongest performance (~85% accuracy).  
+Detailed reasoning is provided in the section below.
 
 ---
 
-### Gesture Skeleton Reconstruction
+## Feature Engineering Details
+
+The dataset originates from 20 tracked body joints captured using a Kinect sensor.
+
+From the raw joint coordinates, additional features were derived:
+
+- Pairwise cosine similarities between joint vectors
+- Relative distances between selected joints
+- Aggregated statistics capturing movement trends
+
+These features encode spatial structure and relational information, transforming raw coordinates into structured representations suitable for classical ML models.
+
+---
+
+## Normalization Method
+
+Because joint coordinates and derived features operate on different numeric scales, normalization was applied to:
+
+- Align feature magnitudes
+- Reduce skewness
+- Improve numerical stability during training
+
+This ensures that no single feature disproportionately influences the model.
+
+---
+
+## Model Selection Rationale
+
+Ensemble-based tree methods (Random Forest and Extra Trees) performed best because:
+
+- They handle structured tabular data well
+- They are robust to feature scaling differences
+- They capture nonlinear relationships effectively
+
+Gradient Boosting showed slightly lower performance, likely due to limited hyperparameter tuning.
+
+---
+
+## Gesture Skeleton Reconstruction
 
 <p align="center">
   <img src="plots/photo_2023-09-14_12-56-31.jpg" width="400"/>
@@ -96,15 +126,15 @@ with ~85% accuracy, while Gradient Boosting struggled due to limited tuning.
   <em>2D skeletal reconstruction from Kinect joint coordinates</em>
 </p>
 
-The skeleton graph represents the spatial relationship of 20 tracked joints,  
-forming the raw basis for cosine and distance-based feature extraction.
+The skeleton representation illustrates how joint coordinates form the structural basis of the gesture features.
 
 ---
 
-### Summary
+## Summary
 
-- **Data quality**: clean and balanced  
-- **Normalization**: stable across both datasets  
-- **Feature diversity**: visible structure clusters  
-- **Top models**: Random Forest, Extra Trees  
-- **Next step**: spiking neural network simulation for gesture sequences
+- Dataset is balanced and clean  
+- Features capture meaningful spatial relationships  
+- Normalization ensures stable training  
+- Random Forest and Extra Trees achieved ~85% accuracy  
+
+Future work includes extending this approach toward temporal modeling and spiking neural network architectures.
