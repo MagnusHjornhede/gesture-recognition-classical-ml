@@ -4,9 +4,13 @@ This project explores hand gesture classification using **classical machine lear
 
 The goal is to evaluate how well traditional ML methods perform on gesture recognition tasks using extracted features.
 
+---
+
 ## Pipeline
 
 dataset → preprocessing → feature extraction → model training → evaluation
+
+---
 
 ## Models Evaluated
 
@@ -14,6 +18,8 @@ dataset → preprocessing → feature extraction → model training → evaluati
 - Random Forest
 - K-Nearest Neighbors (KNN)
 - Extra Trees
+
+---
 
 ## Features
 
@@ -23,6 +29,8 @@ Examples of extracted features include:
 - spatial relationships
 - statistical descriptors
 
+---
+
 ## Technologies
 
 Python  
@@ -30,12 +38,15 @@ scikit-learn
 NumPy  
 Pandas  
 
+---
+
 ## Goal
 
 Provide a **baseline comparison of classical ML models for gesture recognition** before moving to deep learning approaches.
 
 
 ---
+
 ## Data Exploration & Visualization
 
 Before training the models, the gesture recognition dataset was carefully analyzed to understand its structure and statistical properties.
