@@ -4,13 +4,14 @@ This project explores hand gesture classification using **classical machine lear
 
 The goal is to evaluate how well traditional ML methods perform on gesture recognition tasks using extracted features.
 
----
+
+<br>
 
 ## Pipeline
 
 dataset → preprocessing → feature extraction → model training → evaluation
 
----
+<br>
 
 ## Models Evaluated
 
@@ -19,7 +20,7 @@ dataset → preprocessing → feature extraction → model training → evaluati
 - K-Nearest Neighbors (KNN)
 - Extra Trees
 
----
+<br>
 
 ## Features
 
@@ -29,7 +30,7 @@ Examples of extracted features include:
 - spatial relationships
 - statistical descriptors
 
----
+<br>
 
 ## Technologies
 
@@ -38,14 +39,14 @@ scikit-learn
 NumPy  
 Pandas  
 
----
+<br>
 
 ## Goal
 
 Provide a **baseline comparison of classical ML models for gesture recognition** before moving to deep learning approaches.
 
 
----
+<br>
 
 ## Data Exploration & Visualization
 
@@ -64,7 +65,7 @@ For readers interested in deeper technical details, see:
 - [Normalization Method](#normalization-method)
 - [Model Selection Rationale](#model-selection-rationale)
 
----
+<br>
 
 ### Label Distribution
 
@@ -83,7 +84,7 @@ For readers interested in deeper technical details, see:
 The gesture classes are approximately balanced in both datasets.  
 Balanced labels reduce model bias and support fair evaluation.
 
----
+<br>
 
 ### Missing Data Check
 
@@ -97,7 +98,7 @@ Balanced labels reduce model bias and support fair evaluation.
 
 The heatmaps confirm that missing values are negligible, indicating good data integrity.
 
----
+<br>
 
 ### Feature Variability (Boxplots)
 
@@ -116,7 +117,7 @@ The heatmaps confirm that missing values are negligible, indicating good data in
 
 The boxplots show structured variability across feature groups, suggesting meaningful differences between gesture classes.
 
----
+<br>
 
 ### Model Comparison
 
@@ -127,7 +128,7 @@ The boxplots show structured variability across feature groups, suggesting meani
 Random Forest and Extra Trees achieved the strongest performance (~85% accuracy).  
 Detailed reasoning is provided in the section below.
 
----
+<br>
 
 ## Feature Engineering Details
 
@@ -141,9 +142,9 @@ From the raw joint coordinates, additional features were derived:
 
 These features encode spatial structure and relational information, transforming raw coordinates into structured representations suitable for classical ML models.
 
----
+<br>
 
-## Normalization Method
+## Feature Normalization
 
 Because joint coordinates and derived features operate on different numeric scales, normalization was applied to:
 
@@ -153,19 +154,19 @@ Because joint coordinates and derived features operate on different numeric scal
 
 This ensures that no single feature disproportionately influences the model.
 
----
+<br>
 
-## Model Selection Rationale
+## Model Behavior
 
-Ensemble-based tree methods (Random Forest and Extra Trees) performed best because:
+Tree-based ensemble models performed best.
 
-- They handle structured tabular data well
-- They are robust to feature scaling differences
-- They capture nonlinear relationships effectively
+Random Forest and Extra Trees work well because they:
 
-Gradient Boosting showed slightly lower performance, likely due to limited hyperparameter tuning.
-
----
+- handle structured tabular data effectively  
+- capture nonlinear relationships  
+- remain robust to feature scaling differences
+  
+<br>
 
 ## Gesture Skeleton Reconstruction
 
@@ -177,7 +178,7 @@ Gradient Boosting showed slightly lower performance, likely due to limited hyper
 
 The skeleton representation illustrates how joint coordinates form the structural basis of the gesture features.
 
----
+<br>
 
 ## Summary
 
