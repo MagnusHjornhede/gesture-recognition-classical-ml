@@ -4,7 +4,6 @@ This project explores hand gesture classification using **classical machine lear
 
 The goal is to evaluate how well traditional ML methods perform on gesture recognition tasks using extracted features.
 
-
 <br>
 
 ## Pipeline
@@ -44,7 +43,6 @@ Pandas
 ## Goal
 
 Provide a **baseline comparison of classical ML models for gesture recognition** before moving to deep learning approaches.
-
 
 <br>
 
